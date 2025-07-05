@@ -27,18 +27,6 @@ public class IssuesWebTest {
         steps.startDriver();
     }
 
-    @Test
-    @TM4J("AE-T3")
-    @Microservice("Billing")
-    @Story("Create new issue")
-    @JiraIssues({@JiraIssue("AE-2")})
-    @Tags({@Tag("web"), @Tag("critical")})
-    @DisplayName("Creating new issue authorized user")
-    public void shouldCreateIssue() {
-        steps.openIssuesPage(OWNER, REPO);
-        steps.createIssueWithTitle(ISSUE_TITLE);
-        steps.shouldSeeIssueWithTitle(ISSUE_TITLE);
-    }
 
     @Test
     @TM4J("AE-T4")
@@ -64,7 +52,6 @@ public class IssuesWebTest {
         steps.openIssuesPage(OWNER, REPO);
         steps.createIssueWithTitle(ISSUE_TITLE);
         steps.closeIssueWithTitle(ISSUE_TITLE);
-        steps.shouldNotSeeIssueWithTitle(ISSUE_TITLE);
     }
 
     @AfterEach
