@@ -40,6 +40,19 @@ public class PullRequestsWebTest {
         steps.shouldSeePullRequestForBranch(BRANCH);
     }
 
+    @Test
+    @TM4J("AE-T7")
+    @JiraIssue("AE-2")
+    @Microservice("Repository")
+    @Story("Close existing pull request")
+    @Tags({@Tag("web"), @Tag("regress")})
+    @DisplayName("Deleting existing issue for authorized user")
+    public void shouldClosePullRequest() {
+        steps.openPullRequestsPage(OWNER, REPO);
+        steps.createPullRequestFromBranch(BRANCH);
+        steps.closePullRequestForBranch(BRANCH);
+        steps.shouldNotSeePullRequestForBranch(BRANCH);
+    }
 
     @AfterEach
     public void stopDriver() {
